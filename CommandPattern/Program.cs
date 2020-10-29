@@ -9,6 +9,7 @@ namespace CommandPattern
         {
             IDevice newDevice = Remote.GetDevice();
 
+            //pogam varam pieskirt funkcionalitati
             TurnRadioOn onCommand = new TurnRadioOn(newDevice);
             DeviceButton onPress = new DeviceButton(onCommand);
             onPress.Press();
@@ -27,21 +28,17 @@ namespace CommandPattern
             TurnRadioVolDown volDownCommand = new TurnRadioVolDown(newDevice);
             onPress = new DeviceButton(volDownCommand);
             onPress.Press();
-
-            TV someTvSet = new TV();
+            //var uztaisit vel radioaparatus
             Radio someRadio = new Radio();
-            TV someAnotherTvSet = new TV();
             Radio someAnotherRadio = new Radio();
 
+            //var ari sataisit,lai visas iekartas varetu piem izslēgt reizee
             List<IDevice> allDevices = new List<IDevice>();
 
-            allDevices.Add(someTvSet);
             allDevices.Add(someRadio);
-            allDevices.Add(someAnotherTvSet);
             allDevices.Add(someAnotherRadio);
 
             TurnOffAllDevices turnOffDevices = new TurnOffAllDevices(allDevices);
-            //kā pievienot jaunu pogu pultij
             DeviceButton TurnAllOffButton = new DeviceButton(turnOffDevices);
 
             TurnAllOffButton.Press();
